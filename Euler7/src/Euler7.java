@@ -1,32 +1,33 @@
 
 public class Euler7 {
-	
+	/*
+	* Task is to calculate the 10001th prime
+	*/
 	private int primeCounter = 0;
-	private int currentValue = 2;
-	
+	private final int N = 10001;
+	private long nthPrime;
 	public Euler7() {
-		int n = 10;
-		int N = 10001;
-		
-		while(primeCounter<n) {
-			if(currentValue==2) {
+		//Main loop
+		for (int currentValue = 2; primeCounter<N; currentValue++) {
+			if (isPrime(currentValue)) {
+				nthPrime = currentValue;
 				primeCounter++;
-				currentValue++;
-			}else {
-				if (isPrime(currentValue)) {
-					System.out.println(currentValue);
-					primeCounter++;
-				}
-				currentValue = currentValue + 2;
 			}
 		}
-		System.out.println(primeCounter);
-		
+		System.out.println(nthPrime);
 	}
-	
-	public boolean isPrime(double n) {
-		for(int i = 2 ; i < Integer.MAX_VALUE; i++) {
-			if(n%i==0){
+
+	/*
+	prime determinator!
+	*/
+	public boolean isPrime(int n) {
+		// Just need to check the numbers up til the sqrt of n
+		// eg. n=16 then sqrt = 4
+		// 16 is divisible with 2, 4, 8
+		// there will be a number below the sqrt that's a factor of n
+		double numberToCountTo = Math.sqrt(n);
+		for(int i = 2 ; i <= numberToCountTo; i++) {
+			if(n % i == 0){
 				return false;
 			}
 		}
