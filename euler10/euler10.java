@@ -1,4 +1,4 @@
-public class euler8 {
+public class euler10 {
 
 
 	//private int arrayList<Integer> primeList;
@@ -32,6 +32,6 @@ public class euler8 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new euler8();
+		new euler10();
 	}
 }
