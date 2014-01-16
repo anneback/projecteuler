@@ -1,52 +1,51 @@
 
 public class Euler4 {
+	/*
+	* Task is to: Find the largest palindrome made from the product of two 3-digit numbers.
+	*/
 
 	public Euler4() {
 		int twoDigitLow = 100;
 		int twoDigitHigh = 999;
-		derp(twoDigitLow, twoDigitHigh);
-		// TODO Auto-generated constructor stub
+		productPalindrome(twoDigitLow, twoDigitHigh);
 	}
 	
-	public void derp (int start, int end) {
+	public void productPalindrome(int start, int end) {
 		int largestPalindrome = 0;
-		for(int i = start;i <= end;i++) {
-			for (int j = start; j<= end;j++){
+		
+		for(int i = start;i <= end;i++) {		// Outer loops going from start value to end value
+			for (int j = start; j<= end;j++){	// of 3-digits, that calculates the product.
 				Integer product = i*j;
-				String number = product.toString();
-				//System.out.println(number);
-				StringBuffer digits = new StringBuffer(number);				
-
-				/*int left = 0;
-				int right = digits.length()-sb-1;
-				while(left < right){
-					if(digits.charAt(left)==digits.charAt(right)){
-						if(largestPalindrome<product){
-							largestPalindrome = product;
-						}
-					
-				}*/
-					
-				for(int sb = 0; sb < digits.length(); sb++){
-					int left = sb;
-					int right = digits.length()-sb-1;
-					if(digits.charAt(0)==digits.charAt(digits.length()-1) && digits.charAt(1)==digits.charAt(digits.length()-2) && digits.charAt(2)==digits.charAt(digits.length()-3)){
-						if(largestPalindrome<product){
-							largestPalindrome = product;
-						}
-						//System.out.println("Palindrom: "+product);
+				if(isPalindrome(product)){
+					if(largestPalindrome<product){
+						largestPalindrome = product;
 					}
 				}
 			}
 		}
 		System.out.println(largestPalindrome);
 	}
+	/*
+	* Check a number if it's a palindrome
+	*/
+	public boolean isPalindrome(Integer n){
+		String number = n.toString(); // Check the product as a String
+		StringBuffer digits = new StringBuffer(number);						// eg. n = 9009
+		for(int sb = 0; sb < digits.length(); sb++){ 						// 9 0 0 9<-- rightPointer
+			int leftPointer = sb;											// ^
+			int rightPointer = digits.length()-sb-1;						// leftPointer
+			// check if leftPointer and rightPointer are the same
+			if(digits.charAt(leftPointer)!=digits.charAt(rightPointer)) {	
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new Euler4();
 	}
 
