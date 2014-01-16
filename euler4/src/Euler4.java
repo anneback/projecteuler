@@ -5,8 +5,8 @@ public class Euler4 {
 	*/
 
 	public Euler4() {
-		int twoDigitLow = 100;
-		int twoDigitHigh = 999;
+		int twoDigitLow = 100; 	//First 3-digit number
+		int twoDigitHigh = 999; //Last 3-digit number
 		productPalindrome(twoDigitLow, twoDigitHigh);
 	}
 	
