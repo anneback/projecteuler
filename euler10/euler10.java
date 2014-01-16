@@ -1,15 +1,13 @@
+import java.lang.Math;
 public class euler10 {
 
 
 	//private int arrayList<Integer> primeList;
-	private long sumOfPrime;
-	private final int CAPACITY = 2000000;
+	private long sumOfPrime = 0;
+	private final int CAPACITY = 10;
 
-	public euler8 () {
-		this.sumOfPrime = 2;
-		for (int i = 3; i < CAPACITY; i+=2) {
-		//for (int i = CAPACITY; i >= 2; i--) {
-
+	public euler10 () {
+		for (int i = 2; i < CAPACITY; i++) {
 			if(isPrime(i)) {
 				sumOfPrime += i;
 			}
@@ -21,9 +19,13 @@ public class euler10 {
 	prime determinator!
 	*/
 	public boolean isPrime(int n) {
-		if (n%2==0&&n!=2) return false;
-		for(int i = 3 ; i < n; i+=2) {
-			if(n%i==0){
+		// Just need to check the numbers up til the sqrt of n
+		// eg. n=16 then sqrt = 4
+		// 16 is divisible with 2, 4, 8
+		// there will be a number below the sqrt that's a factor of n
+		double numberToCountTo = Math.sqrt(n);
+		for(int i = 2 ; i <= numberToCountTo; i++) {
+			if(n % i == 0){
 				return false;
 			}
 		}
