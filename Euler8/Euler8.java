@@ -25,27 +25,42 @@ public class Euler8 {
 							"84580156166097919133875499200524063689912560717606"+
 							"05886116467109405077541002256983155200055935729725"+
 							"71636269561882670428252483600823257530420752963450";
-	public Euler8(){
-		System.out.println(countFiveConsecutiveDigitsInString("12345"));
+							
+							//String input = "1234560";
+	public Euler8() {
+		//System.out.println(countFiveConsecutiveDigitsInString("12345"));
+		String currentFive = "";
+		int calculatedProduct = 0;
+		for (int i = 0;i<=input.length()-5;i++) {
+			//System.out.println("i: "+i);
+			if (i+5<=input.length()) {
+				currentFive = input.substring(i,i+5);
+				//System.out.println("current5: "+currentFive);
+				calculatedProduct = countFiveConsecutiveDigitsInString(currentFive);
+				if (greatestProduct<calculatedProduct) {
+					greatestProduct = calculatedProduct;
+				}
+			} else {
+				break;
+			}
+		}
+		System.out.println("Greatest: "+greatestProduct);
 	}
 
-	public int countFiveConsecutiveDigitsInString(String fiveDigits){
+	public int countFiveConsecutiveDigitsInString (String fiveDigits) {
 		int evaluatedProduct = 1;
-		System.out.println("fiveDigits="+fiveDigits);
 		char[] tempCA = fiveDigits.toCharArray();
 		// if the string contains 0 the product will be 0, 
 		// therefore we only do things if it's not 0.
-		if(!fiveDigits.contains("0")){
+		//if(!fiveDigits.contains("0")){
 			for (int i = 0; i < fiveDigits.length(); i++) {
 				//hardcoded -48 for getting the number representations correct
 				Integer currentInt = Integer.valueOf(tempCA[i])-48;
-				System.out.println("int: "+currentInt);
 				evaluatedProduct = evaluatedProduct * currentInt;
-				System.out.println(evaluatedProduct);
 			}
 			return evaluatedProduct;
-		}
-		return evaluatedProduct;
+		//}
+		//return evaluatedProduct;
 	}
 
 	public static void main(String[] args) {
